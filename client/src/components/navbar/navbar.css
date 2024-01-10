@@ -1,0 +1,20 @@
+.container {
+    background-color: var(--primary-color);
+}
+
+.container ul {
+    display: flex;
+    list-style: none;
+    padding: 2rem;
+    gap: 5rem;
+}
+
+.container a {
+    color: var(--primary-background-color);
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.container a:hover {
+    color: var(--secondary-color);
+}

@@ -1,0 +1,64 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Hide horizontal overflow */
+}
+  
+.home-container {
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.home-heading {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2rem;
+}
+
+.home-heading h1 {
+    font-size: 48px;
+}
+  
+.home-heading p {
+    margin-top: 4rem;
+    max-width: 100%; /* Ensure the width does not exceed the viewport */
+    width: 50vw; /* Adjust this value to your liking */
+    font-size: 24px;
+    overflow-wrap: break-word; /* Break words to prevent overflow */
+}
+  
+.home-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Create a grid with four columns */
+    gap: 5rem; /* Adjust gap to your liking */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.featured-movie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    text-align: center; /* Add this line */
+}
+
+.featured-movie h2 {
+    font-size: 36px;
+}
+
+.featured-movie h3 {
+    font-size: 24px;
+}
+  
+.featured-movie img { 
+    max-width: 100%; /* Ensure the image does not exceed its container */
+    height: 35vh; /* Adjust this value to your liking */
+    object-fit: contain;
+    border: 0.5rem;
+    border-style: solid;
+    border-color: var(--primary-color);
+}

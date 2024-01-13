@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const movieReviewSchema = require('./MovieReview'); 
 
 const movieSchema = new mongoose.Schema({
   rank: { type: String, required: true },
@@ -7,7 +8,8 @@ const movieSchema = new mongoose.Schema({
   metascore: { type: String },
   plot: { type: String },
   votes: { type: String },
-  imageUrl: { type: String }, // Added imageUrl field
+  imageUrl: { type: String },
+  reviews: [movieReviewSchema], 
 });
 
 const Movie = mongoose.model('Movie', movieSchema);

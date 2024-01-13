@@ -2,21 +2,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 3rem;
 }
 
 .movies-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     margin-top: 4rem;
     padding: 2rem;
 }
 
 .movies-heading h1 {
+    margin-bottom: 1rem;
     font-size: 48px;
 }  
 
 .movies-heading hr {
     width: 35vw;
     border: 0.1rem solid var(--secondary-color);
+}
+
+.movies-heading p {
+    margin-top: 2rem;
+    max-width: 100%; /* Ensure the width does not exceed the viewport */
+    width: 50vw; /* Adjust this value to your liking */
+    font-size: 24px;
+    overflow-wrap: break-word; /* Break words to prevent overflow */
 }
 
 .movies-list {
@@ -39,7 +52,8 @@
     font-size: 20px;
     border-radius: 0.5rem;
     border-style: none;
-    border: 0.1rem solid var(--secondary-color);
+    outline: none;
+    box-shadow: 0 0 0.5rem var(--primary-color);
 }
 
 .search-filter select {
@@ -47,17 +61,18 @@
     font-size: 20px;
     border-radius: 0.5rem;
     border-style: none;
-    border: 0.1rem solid var(--secondary-color);
+    outline: none;
+    box-shadow: 0 0 0.5rem var(--primary-color);
 }
   
 .card {
     background-color: var(--secondary-background-color);
     display: flex;
     justify-content: space-between;
-    border-color: var(--secondary-color);
-    border-style: solid;
+    border-radius: 0.5rem;
     padding: 1rem;
     gap: 5rem;
+    box-shadow: 0 0 2rem var(--primary-color);
 }
 
 .movie-data h2, .card p {
@@ -80,7 +95,5 @@
 
 .movie-image img {
     height: 25vh;
-    border: 0.5rem;
-    border-style: solid;
-    border-color: var(--primary-color);
+    border-radius: 0.5rem;
 }

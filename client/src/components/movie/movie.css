@@ -1,0 +1,68 @@
+.movie-container-content {
+    margin: 5rem;
+}
+
+.top-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+}
+
+.bottom-container {
+    margin-top: 5rem;
+}
+
+.bottom-container h2 {
+    font-size: 36px;
+    font-weight: 700px;
+}
+
+.bottom-container-content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+}
+
+.bottom-container-content h2 {
+    font-size: 24px;
+}
+
+.container-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-content img {
+    height: 37.5vh;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem var(--primary-color);
+}
+
+.movie-data {
+    padding: 0 2.5rem;
+}
+
+.movie-data h1 {
+    font-size: 36px;
+    font-weight: 700px;
+}
+.movie-data hr {
+    margin: 0.5rem 0;
+}
+
+.movie-statistics {
+    background-color: var(--secondary-background-color);
+    box-shadow: 0 0 1rem var(--primary-color);
+    margin: 2rem 0;
+    padding: 1rem;
+    border: none;
+    text-decoration: none;
+    border-radius: 0.5rem;
+}
+  
+.review-container-content {
+    background-color: var(--secondary-background-color);
+    box-shadow: 0 0 1rem var(--primary-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+}

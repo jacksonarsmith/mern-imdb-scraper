@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './movies.css';
 
@@ -44,6 +45,11 @@ const Movies = () => {
             <h1>Top 1000 Movies</h1>
             <br />
             <hr />
+            <p>
+              Dive into the world of cinematic excellence with our curated list of the top 1000 movies according to <a href="imdb.com">IMDb</a>, featuring an intuitive filter for personalized exploration. 
+              From timeless classics to contemporary gems, this collection offers a diverse journey through the world of film. Whether you're a seasoned cinephile or a casual viewer, 
+              discover unforgettable titles that promise an unparalleled cinematic experience tailored to your preferences.
+            </p>
         </div>
         <div className='search-filter'>   
             <input type="text" placeholder="Search..." value={searchTerm} onChange={handleSearchChange} />
@@ -66,7 +72,9 @@ const Movies = () => {
                 <p>Votes: {movie.votes}</p>
                 </div>
                 <div className='movie-image'>
-                <img src={movie.imageUrl} alt={movie.title} />
+                  <Link to={`/movies/${movie._id}`}>
+                    <img src={movie.imageUrl} alt={movie.title} />
+                  </Link>
                 </div>
             </div>
             ))}

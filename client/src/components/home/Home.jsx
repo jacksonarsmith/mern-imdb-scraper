@@ -56,7 +56,9 @@ const Home = () => {
         <div className='movie-image'>
           <h2>{movies[4].title}</h2>
           <br />
-          <img src={movies[4].movie.imageUrl} alt={movies[4].movie.title} />
+          <Link to={`/movies/${movies[4].movie._id}`}>
+            <img src={movies[4].movie.imageUrl} alt={movies[4].movie.title} />
+          </Link>
           <h3>{movies[4].movie.title}</h3>
         </div>
       </div>
@@ -66,7 +68,7 @@ const Home = () => {
             <div className='movie-image'>
               <h2>{title}</h2>
               <br />
-              <Link to="/movies">
+              <Link to={`/movies/${movie._id}`}>
                 <img src={movie.imageUrl} alt={movie.title} />
               </Link>
               <h3>{movie.title}</h3>

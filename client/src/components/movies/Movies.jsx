@@ -47,7 +47,7 @@ const Movies = () => {
             <hr />
             <p>
               Dive into the world of cinematic excellence with our curated list of the top 1000 movies according to <a href="imdb.com">IMDb</a>, featuring an intuitive filter for personalized exploration. 
-              From timeless classics to contemporary gems, this collection offers a diverse journey through the world of film. Whether you're a seasoned cinephile or a casual viewer, 
+              From timeless classics to contemporary gems, this collection offers a diverse journey through the world of film. Whether you&apos;re a seasoned cinephile or a casual viewer, 
               discover unforgettable titles that promise an unparalleled cinematic experience tailored to your preferences.
             </p>
         </div>

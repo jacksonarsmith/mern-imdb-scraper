@@ -97,3 +97,9 @@
     height: 25vh;
     border-radius: 0.5rem;
 }
+
+@media screen and (max-width: 1440px) {
+    .movies-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

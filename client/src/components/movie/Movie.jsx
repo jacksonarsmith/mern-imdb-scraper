@@ -55,9 +55,9 @@ const Movie = () => {
                 ) : (
                 movie.reviews.map((review) => (
                     <div key={review._id} className='review'>
-                    <h3>{review.name}</h3>
-                    <hr />
-                    <p>{review.text}</p>
+                        <h3>{review.name} posted at {new Date(review.date).toLocaleDateString()}</h3>
+                        <hr />
+                        <p>{review.text}</p>
                     </div>
                 ))
                 )}

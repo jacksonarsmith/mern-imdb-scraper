@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const movieRoutes = require('./routes/movieRoutes');
+const userRoutes = require('./routes/userRoutes');
 const scraper = require('./utils/scraper');
 
 require('dotenv').config();
@@ -9,7 +11,12 @@ require('dotenv').config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+app.use(cookieParser());
 app.use(express.json());
 
 // MongoDB connection setup
@@ -29,6 +36,7 @@ const Movie = require('./models/Movie');
 
 // API routes
 app.use('/api/movies', movieRoutes);
+app.use('/api/users', userRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 3001;

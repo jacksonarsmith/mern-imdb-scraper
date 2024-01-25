@@ -54,10 +54,16 @@
 }
 
 .review h3 {
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .review hr {
     margin: 0.2rem 0;
-    width: 15vw;
+    width: 17.5vw;
+    border: 0.1rem solid var(--secondary-color);
+}
+
+.review p {
+    font-size: 20px;
+    margin-top: 0.5rem;
 }

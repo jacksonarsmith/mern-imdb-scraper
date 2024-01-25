@@ -66,3 +66,9 @@
     padding: 1rem;
     border-radius: 0.5rem;
 }
+
+@media screen and (max-width: 1440px) {
+    .movie-data p {
+        font-size: 17.5px;
+    }
+}

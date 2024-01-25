@@ -1,6 +1,7 @@
 const express = require('express');
 const moviesController = require('../controllers/moviesController');
 const movieController = require('../controllers/movieController');
+const verifyToken = require('../middleware/auth');
 
 const router = express.Router();
 

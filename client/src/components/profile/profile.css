@@ -1,0 +1,24 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80.5vh;
+}
+
+.profile-container h1 {
+    font-size: 48px;
+    font-weight: 700;
+    padding: 1rem 0;
+}
+
+.profile-container p {
+    font-size: 24px;
+    padding: 0.5rem 0;
+}
+
+@media screen and (max-width: 1440px) {
+    .profile-container {
+        height: 100vh;
+    }
+}

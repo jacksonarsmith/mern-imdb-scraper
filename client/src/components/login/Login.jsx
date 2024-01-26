@@ -2,66 +2,83 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useCookies } from 'react-cookie';
 import "./login.css";
 
 const Login = () => {
+    const [cookies, setCookie] = useCookies(['token']);
     const navigate = useNavigate();
     const [inputValue, setInputValue] = useState({
-      email: "",
-      password: "",
+        email: "",
+        password: "",
     });
     const { email, password } = inputValue;
+
     const handleOnChange = (e) => {
-      const { name, value } = e.target;
-      setInputValue({
+        const { name, value } = e.target;
+        setInputValue({
         ...inputValue,
         [name]: value,
-      });
+        });
     };
-  
+
     const handleError = (err) =>
-      toast.error(err, {
-        position: "bottom-left",
-      });
+        toast.error(err, {
+            position: "bottom-left",
+            icon: false,
+            closeButton: false,
+        });
     const handleSuccess = (msg) =>
-      toast.success(msg, {
-        position: "bottom-left",
-      });
-  
+        toast.success(msg, {
+            position: "bottom-left",
+            icon: false,
+            closeButton: false,
+        });
+
     const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
+        e.preventDefault();
+        try {
         const { data } = await axios.post(
-          "http://localhost:4000/login",
-          {
+            "http://localhost:3001/api/users/login",
+            {
             ...inputValue,
-          },
-          { withCredentials: true }
+            },
+            { withCredentials: true }
         );
-        console.log(data);
-        const { success, message } = data;
+        const { success, message, token } = data;
         if (success) {
-          handleSuccess(message);
-          setTimeout(() => {
-            navigate("http://localhost:5173");
-          }, 1000);
+            setCookie('token', token, { path: '/' }); // Set the token cookie
+            handleSuccess(message);
+            setTimeout(() => {
+            navigate("/");
+            }, 1000);
         } else {
-          handleError(message);
+            handleError(message);
         }
-      } catch (error) {
+        } catch (error) {
         console.log(error);
-      }
-      setInputValue({
+        }
+        setInputValue({
         ...inputValue,
         email: "",
         password: "",
-      });
+        });
     };
+
+    const isLoggedIn = !!cookies.token;
   
     return (
         <div className="login-container">
           <h1>Login Account</h1>
           <hr />
+          {isLoggedIn ? (
+            <div>
+                <p>You are logged in.</p>
+                <button className='login-browse-button'>
+                    <Link to="/movies" className='browse-button'>Browse Movies</Link>
+                </button>
+            </div>
+          ) : (
           <form onSubmit={handleSubmit}>
             <div className="login-fields">
               <label htmlFor="email">Email</label>
@@ -90,7 +107,8 @@ const Login = () => {
               Don&apos;t have an account? <Link to={"/register"}>Signup</Link>
             </span>
           </form>
-          <ToastContainer />
+          )}
+          <ToastContainer className='toast-message'/>
         </div>
     );
 };

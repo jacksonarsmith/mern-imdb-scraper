@@ -35,9 +35,9 @@ const Movies = () => {
       } else if (filter === 'rating') {
         return parseFloat(b.rating) - parseFloat(a.rating)
       } else {
-        return 0
+        return a.rank - b.rank
       }
-    })
+  })
 
   return (
     <div className='movies-container'>

@@ -8,14 +8,16 @@ exports.getAllUsers = async (req, res) => {
     res.json(users);
 };
 
-exports.getProfile = async (req, res) => {
-    try {
-      const user = await User.findById(req.user._id).select('-password');
-      if (!user) throw Error('User does not exist');
-      res.json(user);
-    } catch (e) {
-      res.status(400).json({ msg: e.message });
-    }
+exports.getProfile = (req, res) => {
+    User.findById(req.user._id)
+      .then(user => {
+        console.log(user);
+        res.json(user);
+      })
+      .catch(err => {
+        console.error('Error: ' + err);
+        res.status(500).json('Error: ' + err);
+      });
 };
 
 exports.register = async (req, res) => {

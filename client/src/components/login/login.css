@@ -60,6 +60,12 @@
     font-size: 16px;
 }
 
+.login-container p {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 2rem;
+}
+
 .login-fields {
     display: flex;
     flex-direction: column;
@@ -77,6 +83,26 @@
     padding: 1rem;
     border-radius: 0.5rem;
     box-shadow: 0 0 1rem var(--primary-color);
+}
+
+.login-browse-button button {
+    margin-top: 2rem;
+    font-size: 20px;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: var(--secondary-background-color);
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 1rem var(--primary-color);
+}
+
+.login-browse-button button:hover {
+    background-color: var(--secondary-color);
+}
+
+.browse-button {
+    color: var(--primary-background-color);
+    text-decoration: none;
 }
 
 @media screen and (max-width: 1440px) {

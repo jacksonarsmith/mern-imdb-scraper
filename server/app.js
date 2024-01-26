@@ -20,7 +20,9 @@ app.use(cookieParser());
 app.use(express.json());
 
 // MongoDB connection setup
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+});
 
 // Check if the movies collection is empty
 const Movie = require('./models/Movie');

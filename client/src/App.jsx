@@ -20,7 +20,7 @@ const App = () => {
     if (cookies.token) { // Check if the token cookie exists
         setIsLoggedIn(true);
 
-        axios.get('http://localhost:3001/api/users/profile', {
+        axios.get(`${import.meta.env.VITE_PROD_URL}/users/profile`, {
             headers: {
               Authorization: `Bearer ${cookies.token}`,
             },

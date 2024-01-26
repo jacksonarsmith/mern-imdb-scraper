@@ -39,7 +39,7 @@ const Login = () => {
         e.preventDefault();
         try {
         const { data } = await axios.post(
-            "http://localhost:3001/api/users/login",
+            `${import.meta.env.VITE_PROD_URL}/users/login`,
             {
             ...inputValue,
             },

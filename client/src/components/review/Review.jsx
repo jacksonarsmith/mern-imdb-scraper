@@ -10,7 +10,7 @@ const Review = ({ movieId }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post(`http://localhost:3001/api/movies/${movieId}/reviews`, { name, text });
+      await axios.post(`${import.meta.env.VITE_PROD_URL}/movies/${movieId}/reviews`, { name, text });
       setName('');
       setText('');
       console.log('Review submitted!');

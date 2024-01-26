@@ -8,7 +8,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios('http://localhost:3001/api/movies/top1000')
+      const result = await axios(`${import.meta.env.VITE_PROD_URL}/movies/top1000`)
       const moviesData = result.data.movies
   
       const highestRanked = moviesData[0]

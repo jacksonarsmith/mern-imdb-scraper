@@ -11,7 +11,7 @@ const Movie = () => {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/movies/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_PROD_URL}/movies/${id}`);
         setMovie(response.data);
       } catch (error) {
         console.error('Failed to fetch movie:', error);

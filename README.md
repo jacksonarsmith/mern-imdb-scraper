@@ -1,4 +1,6 @@
-# IMDb Top 1000 Movies Scraper
+# IMDb Top 100 Movies Scraper
+
+![Screenshot of the application](mern-imdb-project.png)
 
 This application is a robust, full-stack solution developed using the MERN stack (MongoDB, Express.js, React, Node.js). It is designed to efficiently scrape and process data from IMDb's top 1000 movies, addressing the need for a comprehensive and user-friendly platform to explore and analyze IMDb's top-rated movies.
 

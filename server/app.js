@@ -25,13 +25,16 @@ mongoose.connect(process.env.MONGODB_URI);
 // Check if the movies collection is empty
 const Movie = require('./models/Movie');
 
-(async () => {
-    const count = await Movie.countDocuments({});
+Movie.countDocuments({})
+  .then(count => {
     if (count === 0) {
       // If the collection is empty, initiate the web scraper
-      await scraper.scrapeAndPopulateDatabase();
+      scraper.scrapeAndPopulateDatabase();
     }
-})();
+  })
+  .catch(err => {
+    console.error('Failed to count documents:', err);
+  });
   
 
 // API routes

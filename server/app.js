@@ -20,8 +20,10 @@ app.use(cookieParser());
 app.use(express.json());
 
 // MongoDB connection setup
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
+mongoose.connect(process.env.MONGODB_URI).then(() => {
+  console.log('Connection successful');
+}).catch(err => {
+  console.log('Failed to connect', err);
 });
 
 // Check if the movies collection is empty

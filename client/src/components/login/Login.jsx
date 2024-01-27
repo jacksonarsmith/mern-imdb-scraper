@@ -47,7 +47,7 @@ const Login = () => {
         );
         const { success, message, token } = data;
         if (success) {
-            setCookie('token', token, { path: '/' }); // Set the token cookie
+            setCookie('token', token, { path: '/', secure: true }); // Set the token cookie
             handleSuccess(message);
             setTimeout(() => {
             navigate("/");

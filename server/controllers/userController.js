@@ -40,6 +40,7 @@ exports.register = async (req, res) => {
 
         res.cookie("token", token, { 
             withCredentials: true,
+            sameSite: 'none',
             httpOnly: false 
         });
 
@@ -67,6 +68,7 @@ exports.login = async (req, res) => {
 
         res.cookie("token", token, { 
             withCredentials: true,
+            sameSite: 'none',
             httpOnly: false 
         });
 

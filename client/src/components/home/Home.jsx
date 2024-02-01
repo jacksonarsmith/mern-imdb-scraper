@@ -51,7 +51,7 @@ const Home = () => {
         <h1>Smith Scrapers Movie Tracker</h1>
         <br />
         <hr />
-        <p>Smith Scrapers Movie Tracker scrapes the <strong>TOP 100</strong> movies ranked by <a className='imdb-link' href="imdb.com">IMDb</a> and provides a unique and seemless way to find the right movie to watch! The data is regularly updated to ensure accurate ranking. Get creative with your entertainment choices by seeing the best movies to watch with a click of a button!</p>
+        <p>Smith Scrapers Movie Tracker scrapes the <strong>TOP 1000</strong> movies ranked by <a className='imdb-link' href="imdb.com">IMDb</a> and provides a unique and seemless way to find the right movie to watch! The data is regularly updated to ensure accurate ranking. Get creative with your entertainment choices by seeing the best movies to watch with a click of a button!</p>
         <br />
         <button>
           <Link to="/movies" className='heading-button'>Browse Movies</Link>

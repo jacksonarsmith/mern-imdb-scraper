@@ -10,8 +10,13 @@ const Home = () => {
     const fetchData = async () => {
       const result = await axios(`${import.meta.env.VITE_PROD_URL}/movies/top1000`)
       const moviesData = result.data.movies
+
+      if (!moviesData) {
+        console.error('No movies data received');
+        return;
+      }
   
-      const highestRanked = moviesData[0]
+      const highestRanked = moviesData.find(movie => parseInt(movie.rank, 10) === 1);
       const highestMetascore = moviesData.reduce((highest, movie) => parseInt(movie.metascore, 10) > parseInt(highest.metascore, 10) ? movie : highest)
       const mostVoted = moviesData.reduce((most, movie) => parseInt(movie.votes.replace(/,/g, ''), 10) > parseInt(most.votes.replace(/,/g, ''), 10) ? movie : most)
       const highestRated = moviesData.reduce((highest, movie) => parseFloat(movie.rating) > parseFloat(highest.rating) ? movie : highest)

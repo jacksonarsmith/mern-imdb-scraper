@@ -4,12 +4,14 @@ import { PropTypes } from 'prop-types';
 import './navbar.css';
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
-    const [cookies, , removeCookie] = useCookies(['token']); // Use useCookies to access cookies
+    const [cookies, removeCookie] = useCookies(['token']); // Use useCookies to access cookies
   
     const logout = () => {
       removeCookie('token'); // Remove the token cookie
       setIsLoggedIn(false);
     };
+
+    console.log('Is user logged in?', isLoggedIn); // Add this line
   
     return (
       <div className="container">

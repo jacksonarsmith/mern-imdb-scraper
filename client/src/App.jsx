@@ -10,13 +10,15 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Profile from './components/profile/Profile';
 import Footer from './components/footer/Footer';
+import './App.css';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
-  const [cookies] = useCookies(['token']); // Use useCookies to access cookies
+  //const [cookies] = useCookies(['token']); // Use useCookies to access cookies
 
-  useEffect(() => {
+  // Under development
+  /*useEffect(() => {
     if (cookies.token) { // Check if the token cookie exists
         setIsLoggedIn(true);
 
@@ -32,20 +34,22 @@ const App = () => {
             console.error('Error fetching user data:', error);
         });
     }
-  }, [cookies.token]); 
+  }, [cookies.token]);*/
 
   return (
     <Router>
-      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:id" element={<Movie />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={user && <Profile user={user} />} />
-      </Routes>
-      <Footer />
+      <div className='app'>
+        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:id" element={<Movie />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={user && <Profile user={user} />} />
+        </Routes>
+        <Footer />
+      </div>
     </Router>
   );
 }

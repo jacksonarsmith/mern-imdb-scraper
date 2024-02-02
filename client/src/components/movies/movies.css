@@ -98,7 +98,22 @@
     border-radius: 0.5rem;
 }
 
-@media screen and (max-width: 1440px) {
+@keyframes slideInFromBottom {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .card.animate {
+    animation: slideInFromBottom 1s ease-in;
+  }
+
+@media screen and (max-width: 2160px) {
     .movies-list {
         grid-template-columns: repeat(2, 1fr);
     }

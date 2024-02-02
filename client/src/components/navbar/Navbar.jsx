@@ -23,7 +23,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
             <li>
               <Link to="/movies">Movies</Link>
             </li>
-            {isLoggedIn ? (
+            {/* Under Development /*isLoggedIn ? (
               <>
                 <li>
                   <Link to="/profile">Profile</Link>
@@ -36,7 +36,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
               <li>
                 <Link to="/login">Login</Link>
               </li>
-            )}
+            )*/}
           </ul>
         </nav>
       </div>

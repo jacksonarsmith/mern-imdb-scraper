@@ -5,6 +5,7 @@ import './home.css'
 
 const Home = () => {
   const [movies, setMovies] = useState([])
+  const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,8 +42,24 @@ const Home = () => {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentMovieIndex((prevIndex) => {
+        return (prevIndex + 1) % movies.length;
+      });
+    }, 6000);
+
+    return () => clearInterval(timer); // This will clear Interval while unmounting the component
+  }, [movies]);
+
   if (movies.length === 0) {
-    return <div>Loading...</div>
+    return (
+      <div>
+        <svg viewBox="25 25 50 50">
+          <circle r="20" cy="50" cx="50"></circle>
+        </svg>
+      </div>
+    );
   }
 
   return (
@@ -57,30 +74,24 @@ const Home = () => {
           <Link to="/movies" className='heading-button'>Browse Movies</Link>
         </button>
       </div>
-      <div className='featured-movie'>
-        <div className='movie-image'>
-          <h2>{movies[4].title}</h2>
-          <br />
-          <Link to={`/movies/${movies[4].movie._id}`}>
-            <img src={movies[4].movie.imageUrl} alt={movies[4].movie.title} />
-          </Link>
-          <h3>{movies[4].movie.title}</h3>
+      <div className='home-content'>
+        <div className='featured-movies'>
+          {movies.map((movie, index) => (
+            <div 
+              key={`${index}-${currentMovieIndex}`} 
+              className={`home-movie-image ${index === currentMovieIndex ? 'active' : ''}`}
+            >
+              <h2>{movie.title}</h2>
+              <Link to={`/movies/${movie.movie._id}`}>
+                <img src={movie.movie.imageUrl} alt={movie.movie.title} />
+              </Link>
+              <h3>{movie.movie.title}</h3>
+            </div>
+          ))}
         </div>
       </div>
-      <div className='home-content'>
-        {movies.slice(0, 4).map(({ title, movie }) => (
-          <div className='featured-movies' key={title}>
-            <div className='movie-image'>
-              <h2>{title}</h2>
-              <br />
-              <Link to={`/movies/${movie._id}`}>
-                <img src={movie.imageUrl} alt={movie.title} />
-              </Link>
-              <h3>{movie.title}</h3>
-            </div>
-          </div>
-        ))}
-      </div>
+      <br />
+      <br />
     </div>
   )
 }

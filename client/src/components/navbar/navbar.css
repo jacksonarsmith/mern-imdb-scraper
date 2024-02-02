@@ -12,7 +12,8 @@
 .container a {
     color: var(--primary-background-color);
     text-decoration: none;
-    font-size: 24px;
+    font-size: 1.7vw;
+    padding: 0 2rem;
 }
 
 .container nav ul {

@@ -12,8 +12,13 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'https://imdb-smith-scraper.vercel.app',
-  /*origin: 'http://localhost:5173',*/ // For development
+  origin: function(origin, callback){
+    if(!origin) return callback(null, true);
+    if(origin === 'https://imdb-smith-scraper.vercel.app' || origin === 'http://localhost:5173') {
+      return callback(null, true);
+    }
+    callback(new Error('Not allowed by CORS'));
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));

@@ -6,6 +6,10 @@
 html, body {
     background-color: var(--primary-background-color);
     color: var(--primary-text-color);
+    font-family: 'Monospace', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 :root {
@@ -14,4 +18,8 @@ html, body {
     --secondary-color: #537692;
     --primary-background-color: #eef3f9;
     --secondary-background-color: #b3cde4;
+}
+
+.footer {
+    margin-top: auto;
 }

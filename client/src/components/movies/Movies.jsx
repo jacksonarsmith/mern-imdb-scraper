@@ -1,7 +1,33 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useInView } from 'react-intersection-observer';
+import PropTypes from 'prop-types';
 import './movies.css';
+
+const MovieCard = ({ movie }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
+
+  return (
+    <div className={`card ${inView ? 'animate' : ''}`} ref={ref}>
+      <div className='movie-data'>
+        <h2>{movie.title}</h2>
+        <hr />
+        <p>IMDb Ranking: {movie.rank}</p>
+        <p>Rating: {movie.rating}</p>
+        <p>Metascore: {movie.metascore}</p>
+        <p>Votes: {movie.votes}</p>
+      </div>
+      <div className='movie-image'>
+        <Link to={`/movies/${movie._id}`}>
+          <img src={movie.imageUrl} alt={movie.title} />
+        </Link>
+      </div>
+    </div>
+  );
+};
 
 const Movies = () => {
   const [movies, setMovies] = useState([])
@@ -62,25 +88,32 @@ const Movies = () => {
         </div>
         <div className='movies-list'>
             {filteredMovies.map(movie => (
-            <div className='card' key={movie._id}>
-                <div className='movie-data'>
-                <h2>{movie.title}</h2>
-                <hr />
-                <p>IMDb Ranking: {movie.rank}</p>
-                <p>Rating: {movie.rating}</p>
-                <p>Metascore: {movie.metascore}</p>
-                <p>Votes: {movie.votes}</p>
-                </div>
-                <div className='movie-image'>
-                  <Link to={`/movies/${movie._id}`}>
-                    <img src={movie.imageUrl} alt={movie.title} />
-                  </Link>
-                </div>
-            </div>
+              <MovieCard key={movie._id} movie={movie} />
             ))}
         </div>
     </div>
   )
 }
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    rank: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]).isRequired,
+    rating: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]).isRequired,
+    metascore: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]).isRequired,
+    votes: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default Movies

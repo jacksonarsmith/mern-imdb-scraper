@@ -23,7 +23,7 @@ body, html {
 }
 
 .home-heading h1 {
-    font-size: 48px;
+    font-size: 3vw;
 }
 
 .home-heading hr {
@@ -36,13 +36,13 @@ body, html {
     margin-top: 4rem;
     max-width: 100%; /* Ensure the width does not exceed the viewport */
     width: 50vw; /* Adjust this value to your liking */
-    font-size: 24px;
+    font-size: 1.4vw;
     overflow-wrap: break-word; /* Break words to prevent overflow */
 }
 
 .home-heading button {
-    margin-top: 2rem;
-    font-size: 20px;
+    margin: 2rem 0;
+    font-size: 1.4vw;
     padding: 1rem;
     border-radius: 0.5rem;
     border: none;
@@ -69,13 +69,6 @@ body, html {
     text-decoration: none;
 }
 
-.home-content {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Create a grid with four columns */
-    gap: 5rem; /* Adjust gap to your liking */
-    box-sizing: border-box; 
-}
-
 .featured-movie {
     display: flex;
     flex-direction: column;
@@ -86,7 +79,7 @@ body, html {
 }
 
 .featured-movie h3 {
-    font-size: 24px;
+    font-size: 1.7vw;
 }
 
 .featured-movies {
@@ -98,27 +91,24 @@ body, html {
 }
 
 .featured-movies h2, .featured-movie h2 {
-    background-color: var(--secondary-background-color);
-    font-size: 36px;
-    box-shadow: 0 0 1rem var(--primary-color);
+    font-size: 1.7vw;
     padding: 1rem;
     border-radius: 0.5rem;
     margin: 1rem;
 }
 
 .featured-movies h3, .featured-movie h3 {
-    font-size: 24px;
+    font-size: 1.2vw;
     color: var(--primary-color);
     margin: 1rem auto;
     padding: 0.5rem;
     border-radius: 0.5rem;
-    box-shadow: 0 0 1rem var(--primary-color);
 }
   
 .featured-movies img, .featured-movie img { 
     margin: 1rem auto;
     max-width: 100%; /* Ensure the image does not exceed its container */
-    height: 35vh; /* Adjust this value to your liking */
+    height: 25vh; /* Adjust this value to your liking */
     object-fit: contain;
     border-radius: 0.5rem;
     box-shadow: 0 0 1rem var(--primary-color);
@@ -126,7 +116,7 @@ body, html {
 
 .featured-movies button {
     color: var(--primary-color);
-    font-size: 16px;
+    font-size: 1.2vw;
     padding: 0.5rem;
     margin: 1rem auto; 
     background-color: var(--secondary-background-color);
@@ -141,13 +131,101 @@ body, html {
     cursor: pointer;
 }
 
-.movie-image img:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease-in-out;
-}
-
-.movie-image img:hover {
+.home-movie-image img:hover {
     transform: scale(1.1);
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
 }
+
+svg {
+    width: 30vw;
+    transform-origin: center;
+    animation: rotate4 2s linear infinite;
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+   
+circle {
+    fill: none;
+    stroke: hsl(214, 97%, 59%);
+    stroke-width: 2;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: dash4 1.5s ease-in-out infinite;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+@keyframes slideOutToRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.home-content {
+    position: relative;
+    height: 47.5vh; /* Adjust this value based on your needs */
+    width: 20vw; 
+}
+
+.home-movie-image {
+    background-color: var(--secondary-background-color);
+    box-shadow: 0 0 1rem var(--primary-color);
+    padding: 0.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    opacity: 0;
+    animation: slideOutToRight 0.8s ease-out forwards;
+}
+
+.home-movie-image.active {
+    opacity: 1;
+    animation: slideInFromLeft 2s ease-out forwards;
+}
+
+@keyframes rotate4 {
+    100% {
+     transform: rotate(360deg);
+    }
+}
+   
+@keyframes dash4 {
+    0% {
+     stroke-dasharray: 1, 200;
+     stroke-dashoffset: 0;
+    }
+   
+    50% {
+     stroke-dasharray: 90, 200;
+     stroke-dashoffset: -35px;
+    }
+   
+    100% {
+     stroke-dashoffset: -125px;
+    }
+}
+   

@@ -28,7 +28,7 @@
     margin-top: 2rem;
     max-width: 100%; /* Ensure the width does not exceed the viewport */
     width: 50vw; /* Adjust this value to your liking */
-    font-size: 24px;
+    font-size: 1.4vw;
     overflow-wrap: break-word; /* Break words to prevent overflow */
 }
 

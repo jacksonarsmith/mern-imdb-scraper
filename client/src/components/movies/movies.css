@@ -98,6 +98,11 @@
     border-radius: 0.5rem;
 }
 
+.movies-image img:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
 @keyframes slideInFromBottom {
     from {
       transform: translateY(50px);
